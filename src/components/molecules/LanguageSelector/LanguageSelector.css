@@ -1,0 +1,16 @@
+.language-switcher {
+  padding: 0.5rem 0.9rem;
+  border-radius: 9999px;
+  border: none;
+  background: var(--color-btn-active-bg);
+  color: var(--color-btn-active-text);
+  font-family: 'Figtree', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.language-switcher:focus {
+  outline: none;
+}

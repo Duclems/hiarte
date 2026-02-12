@@ -1,0 +1,35 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "projects": "Projets",
+    "about": "À propos",
+    "contact": "Contact"
+  },
+  "home": {
+    "title": "Bienvenue sur Hiarte",
+    "subtitle": "Découvrez nos projets et notre univers créatif.",
+    "seeProjects": "Voir les projets"
+  },
+  "projects": {
+    "title": "Nos Projets",
+    "subtitle": "Explorez notre portfolio de réalisations créatives.",
+    "project": "Projet",
+    "description": "Description du projet"
+  },
+  "about": {
+    "title": "À propos",
+    "subtitle": "Nous sommes une équipe passionnée par la créativité et l'innovation.",
+    "content": "Hiarte est né d'une volonté de fusionner l'art et la technologie pour créer des expériences uniques. Notre approche combine design soigné et solutions techniques performantes."
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Vous avez un projet ? N'hésitez pas à nous contacter.",
+    "email": "Email",
+    "phone": "Téléphone",
+    "sendMessage": "Envoyer un message"
+  },
+  "language": {
+    "fr": "Français",
+    "en": "English"
+  }
+}

@@ -1,0 +1,51 @@
+:root,
+[data-theme="light"] {
+  --color-bg: #EFF7FE;
+  --color-bg-card: #FEFDFC;
+  --color-text: #170E09;
+  --color-text-muted: #475569;
+  --color-border: rgba(23, 14, 9, 0.15);
+  --color-hover: #F3E8DC;
+  --color-btn-active-bg: #170E09;
+  --color-btn-active-text: #EFF7FE;
+  --color-btn-active-hover: #2a1f1a;
+}
+
+[data-theme="dark"] {
+  --color-bg: #0f0f0f;
+  --color-bg-card: #1a1a1a;
+  --color-text: #EFF7FE;
+  --color-text-muted: #94a3b8;
+  --color-border: rgba(239, 247, 254, 0.2);
+  --color-hover: #302110;
+  --color-btn-active-bg: #EFF7FE;
+  --color-btn-active-text: #170E09;
+  --color-btn-active-hover: #e0eef9;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Figtree', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.page {
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

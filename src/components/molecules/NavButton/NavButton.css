@@ -1,0 +1,23 @@
+.nav-btn {
+  padding: 0.5rem 0.9rem;
+  border-radius: 9999px;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--color-text);
+  transition: all 0.2s ease;
+}
+
+.nav-btn:hover {
+  background: var(--color-hover);
+}
+
+.nav-btn--active {
+  background: var(--color-btn-active-bg);
+  color: var(--color-btn-active-text);
+}
+
+.nav-btn--active:hover {
+  background: var(--color-btn-active-bg);
+  color: var(--color-btn-active-text);
+}
