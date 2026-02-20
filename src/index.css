@@ -1,3 +1,26 @@
+/* Nombre d'or φ = 1.61803398875 — échelle de proportions */
+:root {
+  --phi: 1.61803398875;
+  --space-xs: 0.382rem;   /* 1/φ² */
+  --space-sm: 0.618rem;   /* 1/φ */
+  --space-md: 1rem;
+  --space-lg: 1.618rem;   /* φ */
+  --space-xl: 2.618rem;   /* φ² */
+  --space-2xl: 4.236rem;  /* φ³ */
+  --text-xs: 0.618rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.618rem;
+  --text-xl: 2.618rem;
+  --text-2xl: 4.236rem;
+  --line-height: 1.61803398875;
+  --radius-sm: 0.382rem;
+  --radius-md: 0.618rem;
+  --radius-lg: 1rem;
+  --max-width-content: 74rem;  /* ~1184px, proportion φ */
+  --header-btn-height: 2.854rem; /* 2×space-sm + line-height (hauteur boutons header) */
+}
+
 :root,
 [data-theme="light"] {
   --color-bg: #EFF7FE;
@@ -31,6 +54,8 @@
 
 body {
   font-family: 'Figtree', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: var(--text-base);
+  line-height: var(--line-height);
   background-color: var(--color-bg);
   color: var(--color-text);
   min-height: 100vh;

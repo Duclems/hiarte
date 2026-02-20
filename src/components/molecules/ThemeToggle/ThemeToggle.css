@@ -2,9 +2,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 2.25rem;
-  height: 2.25rem;
-  min-width: 2.25rem;
+  width: var(--header-btn-height);
+  height: var(--header-btn-height);
+  min-width: var(--header-btn-height);
+  min-height: var(--header-btn-height);
   padding: 0;
   border-radius: 50%;
   border: none;
