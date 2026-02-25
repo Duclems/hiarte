@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: center;
   min-height: var(--header-btn-height);
-  min-width: 92px;
+  min-width: 98px;
   padding: 0 var(--space-md);
   border-radius: 9999px;
   border: none;
@@ -15,6 +15,11 @@
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
+}
+
+.language-switcher:hover {
+  background: var(--color-btn-active-hover);
+  color: var(--color-btn-active-text);
 }
 
 .language-switcher:focus {

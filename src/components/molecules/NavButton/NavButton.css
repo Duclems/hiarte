@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: center;
   min-height: var(--header-btn-height);
-  min-width: 92px;
+  min-width: 98px;
   padding: 0 var(--space-md);
   border-radius: 9999px;
   font-size: var(--text-base);
@@ -24,6 +24,6 @@
 }
 
 .nav-btn--active:hover {
-  background: var(--color-btn-active-bg);
+  background: var(--color-btn-active-hover);
   color: var(--color-btn-active-text);
 }

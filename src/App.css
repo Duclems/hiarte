@@ -148,6 +148,21 @@
   margin-bottom: var(--space-lg);
 }
 
+.legal-section {
+  margin-top: var(--space-xl);
+}
+.legal-section__title {
+  margin-bottom: var(--space-sm);
+  margin-top: 0;
+}
+.legal-section__content {
+  margin: 0;
+}
+.privacy-intro {
+  margin-top: 0;
+  margin-bottom: var(--space-lg);
+}
+
 @media (max-width: 915px) {
   .main-layout__content:has(.page--home) {
     padding: 0 var(--space-lg);

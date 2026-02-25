@@ -42,6 +42,7 @@ export function Header() {
         </svg>
       </Link>
       <div className="header__actions">
+        <NavButton to="/about">{t('nav.about')}</NavButton>
         <LanguageSelector />
         <ThemeToggle />
       </div>

@@ -9,22 +9,29 @@ export function Footer() {
   return (
     <footer className="footer">
       <div className="footer__inner">
-        <p className="footer__copyright">
-          {t('footer.copyright', { year })}
+        <p className="footer__company">
+          {t('footer.microEnterprise')}
+          <span className="footer__separator" aria-hidden="true"> · </span>
+          SIREN 999934052
+          <span className="footer__separator" aria-hidden="true"> · </span>
+          <a href="mailto:contact@hiarte.fr" className="footer__link">contact@hiarte.fr</a>
         </p>
         <nav className="footer__links">
           <Link to="/contact" className="footer__link">
             {t('nav.contact')}
           </Link>
           <span className="footer__separator" aria-hidden="true">·</span>
-          <a href="#legal" className="footer__link">
+          <Link to="/mentions-legales" className="footer__link">
             {t('footer.legal')}
-          </a>
+          </Link>
           <span className="footer__separator" aria-hidden="true">·</span>
-          <a href="#privacy" className="footer__link">
+          <Link to="/politique-confidentialite" className="footer__link">
             {t('footer.privacy')}
-          </a>
+          </Link>
         </nav>
+        <p className="footer__copyright">
+          {t('footer.copyright', { year })}
+        </p>
       </div>
     </footer>
   )

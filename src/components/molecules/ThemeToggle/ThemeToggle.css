@@ -15,6 +15,11 @@
   transition: all 0.2s ease;
 }
 
+.theme-toggle:hover {
+  background: var(--color-btn-active-hover);
+  color: var(--color-btn-active-text);
+}
+
 .theme-toggle:focus {
   outline: none;
 }

@@ -44,7 +44,7 @@
   display: flex;
   align-items: center;
   gap: var(--space-xs);
-  width: 132px;
+  width: 230px;
   position: relative;
   z-index: 1;
 }
