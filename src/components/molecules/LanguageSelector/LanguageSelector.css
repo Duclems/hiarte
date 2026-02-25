@@ -1,7 +1,9 @@
 .language-switcher {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   min-height: var(--header-btn-height);
+  min-width: 92px;
   padding: 0 var(--space-md);
   border-radius: 9999px;
   border: none;
@@ -10,7 +12,7 @@
   font-family: 'Figtree', sans-serif;
   font-size: var(--text-base);
   line-height: var(--line-height);
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
 }

@@ -6,6 +6,7 @@
 }
 
 .main-layout__background {
+  display: none; /* animation de fond masquée */
   position: fixed;
   inset: 0;
   z-index: 0;
@@ -16,7 +17,7 @@
   position: relative;
   z-index: 1;
   flex: 1;
-  padding: var(--space-xl);
+  padding: var(--space-xl) var(--space-2xl);
   max-width: var(--max-width-content);
   margin: 0 auto;
   width: 100%;
@@ -24,6 +25,6 @@
 
 @media (max-width: 915px) {
   .main-layout__content {
-    padding: var(--space-md);
+    padding: var(--space-md) var(--space-lg);
   }
 }

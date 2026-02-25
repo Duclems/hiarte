@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: var(--space-sm) var(--space-md);
+  padding: var(--space-sm) var(--space-2xl);
   gap: var(--space-sm);
   position: relative;
   z-index: 1;
@@ -52,7 +52,7 @@
 @media (max-width: 915px) {
   .header {
     flex-wrap: wrap;
-    padding: var(--space-sm) var(--space-sm);
+    padding: var(--space-sm) var(--space-lg);
     gap: var(--space-sm) 0;
     justify-content: space-between;
   }
