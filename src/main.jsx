@@ -11,7 +11,7 @@ document.documentElement.setAttribute('data-theme', savedTheme)
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL.replace(/\/$/, '')}>
       <ThemeProvider>
         <App />
       </ThemeProvider>
