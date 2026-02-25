@@ -2,11 +2,13 @@ import { Outlet } from 'react-router-dom'
 import { Header } from '../../organisms/Header'
 import { Footer } from '../../organisms/Footer'
 import { LightRays } from '../../atoms/LightRays'
+import { HeadMeta } from '../../atoms/HeadMeta'
 import './MainLayout.css'
 
 export function MainLayout() {
   return (
     <div className="main-layout">
+      <HeadMeta />
       <div className="main-layout__background">
         <LightRays
           raysOrigin="top-right"

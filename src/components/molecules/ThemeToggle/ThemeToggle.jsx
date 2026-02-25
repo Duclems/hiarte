@@ -1,18 +1,21 @@
+import { useTranslation } from 'react-i18next'
 import { useTheme } from '../../../contexts/ThemeContext'
 import './ThemeToggle.css'
 
 export function ThemeToggle() {
+  const { t } = useTranslation()
   const { theme, toggleTheme } = useTheme()
+  const isLight = theme === 'light'
 
   return (
     <button
       type="button"
       className="theme-toggle"
       onClick={toggleTheme}
-      aria-label={theme === 'light' ? 'Passer au thème sombre' : 'Passer au thème clair'}
-      title={theme === 'light' ? 'Thème sombre' : 'Thème clair'}
+      aria-label={isLight ? t('a11y.themeToDark') : t('a11y.themeToLight')}
+      title={isLight ? t('a11y.themeDarkTitle') : t('a11y.themeLightTitle')}
     >
-      {theme === 'light' ? (
+      {isLight ? (
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
         </svg>

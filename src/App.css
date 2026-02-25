@@ -61,7 +61,8 @@
   align-items: center;
   justify-content: center;
   min-height: var(--header-btn-height);
-  padding: 0 var(--space-xl);
+  width: 236px;
+  padding: 0;
   background: var(--color-btn-active-bg);
   color: var(--color-btn-active-text);
   text-decoration: none;
@@ -77,25 +78,15 @@
   color: var(--color-btn-active-text);
 }
 
-/* Démarrer : fond blanc (#F5F0E6), texte noir (#401705) */
+/* Démarrer : même style que les boutons inactifs du header */
 .home-frame--outline {
-  background: #F5F0E6;
-  color: #401705;
+  background: transparent;
+  color: var(--color-text);
 }
 
 .home-frame--outline:hover {
-  background: #ebe5da;
-  color: #401705;
-}
-
-[data-theme="dark"] .home-frame--outline {
-  background: #F5F0E6;
-  color: #401705;
-}
-
-[data-theme="dark"] .home-frame--outline:hover {
-  background: #e8e2d8;
-  color: #401705;
+  background: var(--color-hover);
+  color: var(--color-text);
 }
 
 .home-hero__text {
@@ -104,6 +95,7 @@
 }
 
 .home-hero__headline {
+  margin: 0;
   font-size: clamp(var(--text-xl), 6vw, var(--text-2xl));
   font-weight: 700;
   line-height: 1.15;

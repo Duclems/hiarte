@@ -1,34 +1,37 @@
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 export function HomePage() {
+  const { t } = useTranslation()
+
   return (
     <div className="page page--home">
       <div className="home-main">
-        <div className="home-hero__text">
-          <div className="home-hero__headline">
-            <span className="home-hero__line">Design</span>
-            <span className="home-hero__line">Code</span>
-            <span className="home-hero__line">Impact</span>
-          </div>
+        <section className="home-hero__text" aria-labelledby="hero-title">
+          <h1 id="hero-title" className="home-hero__headline">
+            <span className="home-hero__line">{t('home.heroLine1')}</span>
+            <span className="home-hero__line">{t('home.heroLine2')}</span>
+            <span className="home-hero__line">{t('home.heroLine3')}</span>
+          </h1>
           <p className="home-hero__tagline">
-            Façonnons des solutions numériques avec une identité forte
+            {t('home.tagline')}
           </p>
-        </div>
-        <div className="home-intro">
+        </section>
+        <section className="home-intro" aria-label={t('home.introLabel')}>
           <p>
-            Hiarte est une micro entreprise spécialisée dans la création de solutions numériques sur mesure : développement d'applications, automatisation et création d'outils.
+            {t('home.intro')}
           </p>
-        </div>
+        </section>
       </div>
       <div className="home-center">
-        <img src="/oui.webp" alt="" className="home-center__img" />
+        <img src="/oui.webp" alt={t('home.heroImageAlt')} className="home-center__img" />
       </div>
       <div className="home-actions">
         <Link to="/projects" className="home-frame">
-          Explorer nos services
+          {t('home.ctaExplore')}
         </Link>
         <Link to="/contact" className="home-frame home-frame--outline">
-          Démarrer un projet
+          {t('home.ctaStart')}
         </Link>
       </div>
     </div>

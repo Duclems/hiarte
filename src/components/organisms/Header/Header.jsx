@@ -22,7 +22,7 @@ export function Header() {
           </NavButton>
         ))}
       </nav>
-      <Link to="/" className="header__center" aria-label="Hiarte - Accueil">
+      <Link to="/" className="header__center" aria-label={t('header.logoLabel')}>
         <svg
           className="header__logo"
           viewBox="0 0 500 500"
