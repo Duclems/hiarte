@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useLocation } from 'react-router-dom'
 
-const OG_IMAGE_PATH = '/oui.webp'
+const OG_IMAGE_PATH = `${import.meta.env.BASE_URL}oui.webp`
 
 function getCanonicalUrl() {
   if (typeof window === 'undefined') return ''

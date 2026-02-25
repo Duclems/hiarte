@@ -24,7 +24,7 @@ export function HomePage() {
         </section>
       </div>
       <div className="home-center">
-        <img src="/oui.webp" alt={t('home.heroImageAlt')} className="home-center__img" />
+        <img src={`${import.meta.env.BASE_URL}oui.webp`} alt={t('home.heroImageAlt')} className="home-center__img" />
       </div>
       <div className="home-actions">
         <Link to="/projects" className="home-frame">
