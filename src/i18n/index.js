@@ -3,7 +3,16 @@ import { initReactI18next } from 'react-i18next'
 import fr from '../locales/fr.json'
 import en from '../locales/en.json'
 
-const storedLanguage = localStorage.getItem('hiarte-language') || 'fr'
+function getInitialLanguage() {
+  if (typeof window === 'undefined') return 'fr'
+  const params = new URLSearchParams(window.location.search)
+  const langParam = params.get('lang')
+  if (langParam === 'en' || langParam === 'fr') {
+    localStorage.setItem('hiarte-language', langParam)
+    return langParam
+  }
+  return localStorage.getItem('hiarte-language') || 'fr'
+}
 
 i18n
   .use(initReactI18next)
@@ -12,7 +21,7 @@ i18n
       fr: { translation: fr },
       en: { translation: en },
     },
-    lng: storedLanguage,
+    lng: getInitialLanguage(),
     fallbackLng: 'fr',
     interpolation: {
       escapeValue: false,

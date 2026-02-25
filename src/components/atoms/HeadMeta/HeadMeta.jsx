@@ -11,6 +11,37 @@ function getCanonicalUrl() {
   return `${origin}${pathname}`.replace(/\/$/, '') || origin + '/'
 }
 
+function getBaseUrlWithLang(lang) {
+  if (typeof window === 'undefined') return ''
+  const origin = window.location.origin
+  const pathname = window.location.pathname
+  const base = `${origin}${pathname}`
+  const sep = base.includes('?') ? '&' : '?'
+  return `${base}${sep}lang=${lang}`
+}
+
+function setHreflang() {
+  const existing = document.querySelectorAll('link[rel="alternate"][hreflang]')
+  existing.forEach((el) => el.remove())
+  const head = document.head
+  const langs = [
+    { lang: 'fr', href: getBaseUrlWithLang('fr') },
+    { lang: 'en', href: getBaseUrlWithLang('en') },
+  ]
+  langs.forEach(({ lang, href }) => {
+    const link = document.createElement('link')
+    link.setAttribute('rel', 'alternate')
+    link.setAttribute('hreflang', lang)
+    link.setAttribute('href', href)
+    head.appendChild(link)
+  })
+  const xDefault = document.createElement('link')
+  xDefault.setAttribute('rel', 'alternate')
+  xDefault.setAttribute('hreflang', 'x-default')
+  xDefault.setAttribute('href', getBaseUrlWithLang('fr'))
+  head.appendChild(xDefault)
+}
+
 function ensureMeta(nameOrProp, isProperty = false) {
   const attr = isProperty ? 'property' : 'name'
   let el = document.querySelector(`meta[${attr}="${nameOrProp}"]`)
@@ -40,6 +71,9 @@ export function HeadMeta() {
     const baseUrl = typeof window !== 'undefined' ? window.location.origin : ''
     const canonicalUrl = getCanonicalUrl()
     const ogImage = baseUrl ? `${baseUrl}${OG_IMAGE_PATH}` : OG_IMAGE_PATH
+    const lang = i18n.language?.startsWith('fr') ? 'fr' : 'en'
+
+    document.documentElement.lang = lang
 
     const title = t('meta.title')
     const description = t('meta.description')
@@ -62,7 +96,9 @@ export function HeadMeta() {
 
     const canonical = ensureLink('canonical')
     canonical.setAttribute('href', canonicalUrl)
-  }, [t, i18n.language, location.pathname])
+
+    setHreflang()
+  }, [t, i18n.language, location.pathname, location.search])
 
   return null
 }
