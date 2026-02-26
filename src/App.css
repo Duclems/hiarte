@@ -25,6 +25,21 @@
   align-items: flex-start;
   gap: var(--space-xl);
   flex-shrink: 0;
+  width: 100%;
+}
+
+.home-hero-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  width: 100%;
+  flex-wrap: nowrap;
+}
+
+.home-hero-row .home-hero__text {
+  width: max-content;
 }
 
 .home-center {
@@ -47,12 +62,13 @@
 
 .home-actions {
   position: relative;
+  margin-top: var(--space-md);
   z-index: 1;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: flex-end;
   justify-content: center;
-  gap: var(--space-md);
+  gap: var(--space-lg);
   flex-shrink: 0;
 }
 
@@ -61,12 +77,12 @@
   align-items: center;
   justify-content: center;
   min-height: var(--header-btn-height);
-  width: 236px;
+  width: 100px;
   padding: 0;
   background: var(--color-btn-active-bg);
   color: var(--color-btn-active-text);
   text-decoration: none;
-  font-size: var(--text-base);
+  font-size: var(--text-sm);
   font-weight: 500;
   min-width: 11.09rem;
   border-radius: 9999px;
@@ -92,11 +108,13 @@
 .home-hero__text {
   color: var(--color-text, #1a1a1a);
   max-width: 28em; /* ~45em/φ pour lecture */
+  width: max-content; /* ne prend que la largeur du titre pour laisser les boutons à droite */
+  flex-shrink: 0;
 }
 
 .home-hero__headline {
   margin: 0;
-  font-size: clamp(var(--text-xl), 6vw, var(--text-2xl));
+  font-size: clamp(var(--text-xl), 5.5vw, var(--text-2xl));
   font-weight: 700;
   line-height: 1.15;
 }
@@ -178,13 +196,79 @@
     max-height: 50vh;
   }
 
-  .home-actions {
-    width: 100%;
-    justify-content: flex-start;
-  }
-
   .home-background {
     max-height: calc(100vh - 4rem);
+  }
+}
+
+/* Très petit écran : titre et boutons en colonne */
+@media (max-width: 600px) {
+  .home-hero-row {
+    align-items: flex-start;
+  }
+
+  .home-actions {
+    justify-content: flex-start;
+  }
+}
+
+/* Téléphone : espacements réduits, image en bas de page (au-dessus du footer) */
+@media (max-width: 800px) {
+  .main-layout__content:has(.page--home) {
+    padding: var(--space-md) var(--space-md) 0;
+  }
+
+  .page--home {
+    gap: var(--space-md);
+    padding-top: var(--space-md);
+    padding-bottom: 0;
+    min-height: auto;
+  }
+
+  /* Image traitée à part : en flux, tout en bas du contenu, au-dessus du footer */
+  .home-center {
+    position: static;
+    inset: unset;
+    order: 2;
+    width: 100%;
+    margin-top: var(--space-lg);
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    min-height: 0;
+  }
+
+  .home-center__img {
+    width: 100%;
+    max-width: min(95%, 56rem);
+    max-height: 45vh;
+    height: auto;
+    object-fit: contain;
+    object-position: bottom;
+    display: block;
+  }
+
+  .home-main {
+    order: 1;
+    gap: var(--space-sm);
+  }
+
+  .home-hero-row {
+    gap: var(--space-sm);
+  }
+
+  .home-hero__tagline {
+    margin-top: var(--space-sm);
+  }
+
+  .home-intro p {
+    margin-bottom: var(--space-xs);
+  }
+
+  /* Même largeur pour les deux boutons, alignement propre */
+  .home-actions .home-frame {
+    width: 100%;
+    max-width: 14rem;
   }
 }
 
