@@ -1,0 +1,370 @@
+{
+  "projectPath": {
+    "id": "project_discovery_path",
+    "title": "Démarrer un projet accompagné",
+    "description": "Parcours guidé permettant de définir les besoins d’un projet, les contraintes, le budget, le délai et les services attendus.",
+    "positioning": {
+      "title": "Positionnement",
+      "content": ""
+    },
+    "meta": {
+      "businessCode": "6201Z",
+      "version": "1.0.0",
+      "language": "fr"
+    },
+    "steps": [
+      {
+        "id": "project_type",
+        "title": "Nature du besoin",
+        "description": "Quel type de projet ou de service recherchez-vous ?",
+        "inputType": "multi_select",
+        "required": true,
+        "allowOther": true,
+        "options": [
+          { "label": "Site vitrine", "value": "showcase_website" },
+          { "label": "Application web", "value": "web_application" },
+          { "label": "Application mobile", "value": "mobile_application" },
+          { "label": "Outil métier interne", "value": "internal_business_tool" },
+          { "label": "Dashboard / interface de pilotage", "value": "dashboard" },
+          { "label": "API / backend", "value": "api_backend" },
+          { "label": "Automatisation", "value": "automation" },
+          { "label": "Conseil / accompagnement technique", "value": "technical_consulting" },
+          { "label": "Accompagnement produit / UX", "value": "product_ux_support" },
+          { "label": "Tests / CI-CD / industrialisation", "value": "testing_cicd" },
+          { "label": "Construction / configuration d’ordinateur", "value": "computer_building" },
+          {
+            "label": "Autre",
+            "value": "other",
+            "hasFreeText": true,
+            "freeTextPlaceholder": "Précisez votre besoin"
+          }
+        ]
+      },
+      {
+        "id": "business_category",
+        "title": "Catégorie / secteur",
+        "description": "Dans quel contexte s’inscrit votre projet ?",
+        "inputType": "multi_select",
+        "required": true,
+        "allowOther": true,
+        "options": [
+          { "label": "Entreprise / PME", "value": "company_sme" },
+          { "label": "Indépendant / freelance", "value": "freelance" },
+          { "label": "E-commerce", "value": "ecommerce" },
+          { "label": "Créateur / artiste / média", "value": "creator_artist_media" },
+          { "label": "Association", "value": "association" },
+          { "label": "Événementiel", "value": "events" },
+          { "label": "Éducation / formation", "value": "education" },
+          { "label": "Santé / bien-être", "value": "health_wellness" },
+          { "label": "Tech / startup", "value": "tech_startup" },
+          { "label": "Usage personnel", "value": "personal_project" },
+          {
+            "label": "Autre",
+            "value": "other",
+            "hasFreeText": true,
+            "freeTextPlaceholder": "Précisez la catégorie ou le secteur"
+          }
+        ]
+      },
+      {
+        "id": "support_type",
+        "title": "Type d’accompagnement souhaité",
+        "description": "Quel niveau d’aide attendez-vous ?",
+        "inputType": "multi_select",
+        "required": true,
+        "allowOther": true,
+        "options": [
+          { "label": "J’ai besoin d’aide pour clarifier mon idée", "value": "idea_clarification" },
+          { "label": "Cadrage fonctionnel", "value": "functional_scoping" },
+          { "label": "Conception produit / UX", "value": "product_ux_design" },
+          { "label": "Développement complet", "value": "full_development" },
+          { "label": "Refonte d’un existant", "value": "redesign_existing" },
+          { "label": "Audit / conseil technique", "value": "technical_audit" },
+          { "label": "Tests / qualité / CI-CD", "value": "quality_cicd" },
+          { "label": "Maintenance / accompagnement long terme", "value": "long_term_support" },
+          {
+            "label": "Autre",
+            "value": "other",
+            "hasFreeText": true,
+            "freeTextPlaceholder": "Précisez le type d’accompagnement souhaité"
+          }
+        ]
+      },
+      {
+        "id": "main_goal",
+        "title": "Objectif principal",
+        "description": "Quel est l’objectif principal de votre projet ?",
+        "inputType": "multi_select",
+        "required": true,
+        "allowOther": true,
+        "options": [
+          { "label": "Présenter une activité", "value": "present_activity" },
+          { "label": "Vendre des produits", "value": "sell_products" },
+          { "label": "Vendre des services", "value": "sell_services" },
+          { "label": "Automatiser une tâche", "value": "automate_task" },
+          { "label": "Centraliser des données", "value": "centralize_data" },
+          { "label": "Améliorer l’expérience utilisateur", "value": "improve_user_experience" },
+          { "label": "Créer un outil métier sur mesure", "value": "custom_business_tool" },
+          { "label": "Optimiser un process interne", "value": "optimize_internal_process" },
+          { "label": "Traiter des documents / fichiers", "value": "process_documents" },
+          { "label": "Créer un tableau de bord", "value": "create_dashboard" },
+          { "label": "Gagner du temps", "value": "save_time" },
+          {
+            "label": "Autre",
+            "value": "other",
+            "hasFreeText": true,
+            "freeTextPlaceholder": "Précisez l’objectif principal"
+          }
+        ]
+      },
+      {
+        "id": "target_users",
+        "title": "Utilisateurs concernés",
+        "description": "À qui s’adresse la solution ?",
+        "inputType": "multi_select",
+        "required": false,
+        "allowOther": true,
+        "options": [
+          { "label": "Grand public", "value": "general_public" },
+          { "label": "Clients", "value": "clients" },
+          { "label": "Équipe interne", "value": "internal_team" },
+          { "label": "Administrateurs", "value": "administrators" },
+          { "label": "Partenaires", "value": "partners" },
+          { "label": "Utilisateurs connectés", "value": "authenticated_users" },
+          {
+            "label": "Autre",
+            "value": "other",
+            "hasFreeText": true,
+            "freeTextPlaceholder": "Précisez les utilisateurs concernés"
+          }
+        ]
+      },
+      {
+        "id": "project_features",
+        "title": "Fonctionnalités souhaitées",
+        "description": "Quelles fonctionnalités souhaitez-vous inclure ?",
+        "inputType": "multi_select",
+        "required": true,
+        "allowOther": true,
+        "options": [
+          { "label": "Interface utilisateur", "value": "user_interface" },
+          { "label": "Responsive mobile", "value": "responsive_mobile" },
+          { "label": "Tableau de bord", "value": "dashboard" },
+          { "label": "Espace utilisateur / compte", "value": "user_account" },
+          { "label": "Authentification", "value": "authentication" },
+          { "label": "Formulaires avancés", "value": "advanced_forms" },
+          { "label": "Paiement en ligne", "value": "online_payment" },
+          { "label": "Réservation / prise de rendez-vous", "value": "booking" },
+          { "label": "API", "value": "api" },
+          { "label": "Base de données", "value": "database" },
+          { "label": "Connexion à des services tiers", "value": "third_party_connections" },
+          { "label": "Import / export de documents", "value": "document_import_export" },
+          { "label": "OCR / extraction de texte", "value": "ocr_text_extraction" },
+          { "label": "Génération de PDF / reporting", "value": "pdf_reporting" },
+          { "label": "Notifications / emails", "value": "notifications_emails" },
+          { "label": "Administration / back-office", "value": "admin_backoffice" },
+          { "label": "Automatisation de tâches", "value": "task_automation" },
+          { "label": "Statistiques / analytics", "value": "analytics" },
+          { "label": "Déploiement / hébergement", "value": "hosting_deployment" },
+          { "label": "Tests automatisés", "value": "automated_testing" },
+          { "label": "CI/CD", "value": "cicd" },
+          {
+            "label": "Autre",
+            "value": "other",
+            "hasFreeText": true,
+            "freeTextPlaceholder": "Précisez les fonctionnalités souhaitées"
+          }
+        ]
+      },
+      {
+        "id": "online_sales",
+        "title": "Vente en ligne",
+        "description": "Votre projet inclut-il de la vente ou du paiement ?",
+        "inputType": "radio",
+        "required": true,
+        "allowOther": true,
+        "options": [
+          { "label": "Non", "value": "no" },
+          { "label": "Oui, vente de produits", "value": "products" },
+          { "label": "Oui, vente de services", "value": "services" },
+          { "label": "Oui, paiement partiel / acompte", "value": "partial_payment" },
+          { "label": "Oui, demande de devis uniquement", "value": "quote_only" },
+          {
+            "label": "Autre",
+            "value": "other",
+            "hasFreeText": true,
+            "freeTextPlaceholder": "Précisez le mode de vente ou de paiement"
+          }
+        ]
+      },
+      {
+        "id": "existing_assets",
+        "title": "Éléments déjà disponibles",
+        "description": "Avez-vous déjà des éléments existants pour ce projet ?",
+        "inputType": "multi_select",
+        "required": false,
+        "allowOther": true,
+        "options": [
+          { "label": "Logo / identité visuelle", "value": "logo_branding" },
+          { "label": "Maquettes / wireframes", "value": "mockups_wireframes" },
+          { "label": "Nom de domaine", "value": "domain_name" },
+          { "label": "Hébergement", "value": "hosting" },
+          { "label": "Contenus textes", "value": "content_text" },
+          { "label": "Base de données / fichiers", "value": "data_files" },
+          { "label": "Projet existant à reprendre", "value": "existing_project" },
+          { "label": "API ou service déjà en place", "value": "existing_api_service" },
+          { "label": "Aucun", "value": "none" },
+          {
+            "label": "Autre",
+            "value": "other",
+            "hasFreeText": true,
+            "freeTextPlaceholder": "Précisez les éléments déjà disponibles"
+          }
+        ]
+      },
+      {
+        "id": "budget",
+        "title": "Budget estimé",
+        "description": "Quel budget envisagez-vous pour ce projet ?",
+        "inputType": "radio",
+        "required": true,
+        "allowOther": true,
+        "options": [
+          { "label": "Moins de 1 000 €", "value": "under_1000" },
+          { "label": "1 000 € à 3 000 €", "value": "1000_3000" },
+          { "label": "3 000 € à 6 000 €", "value": "3000_6000" },
+          { "label": "6 000 € à 10 000 €", "value": "6000_10000" },
+          { "label": "10 000 € et plus", "value": "10000_plus" },
+          { "label": "À définir ensemble", "value": "to_define_together" },
+          {
+            "label": "Autre",
+            "value": "other",
+            "hasFreeText": true,
+            "freeTextPlaceholder": "Précisez votre budget estimé"
+          }
+        ]
+      },
+      {
+        "id": "timeline",
+        "title": "Délai souhaité",
+        "description": "Sous quel délai souhaitez-vous lancer ou recevoir le projet ?",
+        "inputType": "radio",
+        "required": true,
+        "allowOther": true,
+        "options": [
+          { "label": "Urgent", "value": "urgent" },
+          { "label": "Sous 2 semaines", "value": "under_2_weeks" },
+          { "label": "Sous 1 mois", "value": "under_1_month" },
+          { "label": "Sous 2 à 3 mois", "value": "under_3_months" },
+          { "label": "Flexible", "value": "flexible" },
+          { "label": "Je souhaite d’abord être conseillé", "value": "need_guidance_first" },
+          {
+            "label": "Autre",
+            "value": "other",
+            "hasFreeText": true,
+            "freeTextPlaceholder": "Précisez le délai souhaité"
+          }
+        ]
+      },
+      {
+        "id": "project_stage",
+        "title": "Niveau d’avancement",
+        "description": "Où en êtes-vous aujourd’hui ?",
+        "inputType": "radio",
+        "required": true,
+        "allowOther": true,
+        "options": [
+          { "label": "Simple idée", "value": "idea_only" },
+          { "label": "Besoin déjà cadré", "value": "scoped_need" },
+          { "label": "Maquettes déjà prêtes", "value": "mockups_ready" },
+          { "label": "Projet déjà existant à améliorer", "value": "existing_project_to_improve" },
+          { "label": "Besoin d’un avis technique avant de lancer", "value": "need_technical_review" },
+          { "label": "Projet partiellement développé", "value": "partially_built" },
+          {
+            "label": "Autre",
+            "value": "other",
+            "hasFreeText": true,
+            "freeTextPlaceholder": "Précisez le niveau d’avancement"
+          }
+        ]
+      },
+      {
+        "id": "design_and_branding",
+        "title": "Design / identité / expérience",
+        "description": "Avez-vous besoin d’un accompagnement sur l’aspect visuel ou UX ?",
+        "inputType": "multi_select",
+        "required": false,
+        "allowOther": true,
+        "options": [
+          { "label": "UI design", "value": "ui_design" },
+          { "label": "UX / parcours utilisateur", "value": "ux_design" },
+          { "label": "Identité visuelle légère", "value": "light_branding" },
+          { "label": "Refonte d’interface existante", "value": "interface_redesign" },
+          { "label": "Aucun besoin particulier", "value": "no_specific_need" },
+          {
+            "label": "Autre",
+            "value": "other",
+            "hasFreeText": true,
+            "freeTextPlaceholder": "Précisez vos besoins design / UX"
+          }
+        ]
+      },
+      {
+        "id": "technical_services",
+        "title": "Services techniques complémentaires",
+        "description": "Souhaitez-vous inclure des services complémentaires ?",
+        "inputType": "multi_select",
+        "required": false,
+        "allowOther": true,
+        "options": [
+          { "label": "Conseil technique", "value": "technical_consulting" },
+          { "label": "Choix d’architecture", "value": "architecture_guidance" },
+          { "label": "Mise en place de tests", "value": "test_setup" },
+          { "label": "Mise en place CI/CD", "value": "cicd_setup" },
+          { "label": "Déploiement", "value": "deployment" },
+          { "label": "Maintenance", "value": "maintenance" },
+          { "label": "Formation / prise en main", "value": "training" },
+          { "label": "Configuration d’environnement", "value": "environment_setup" },
+          { "label": "Construction / configuration d’ordinateur", "value": "computer_setup" },
+          { "label": "Aucun", "value": "none" },
+          {
+            "label": "Autre",
+            "value": "other",
+            "hasFreeText": true,
+            "freeTextPlaceholder": "Précisez les services complémentaires souhaités"
+          }
+        ]
+      },
+      {
+        "id": "contact_preferences",
+        "title": "Préférences de contact",
+        "description": "Comment souhaitez-vous être recontacté ?",
+        "inputType": "checkbox_group",
+        "required": false,
+        "allowOther": true,
+        "options": [
+          { "label": "Email", "value": "email" },
+          { "label": "Téléphone", "value": "phone" },
+          { "label": "Visioconférence", "value": "video_call" },
+          { "label": "Message écrit d’abord", "value": "written_first" },
+          {
+            "label": "Autre",
+            "value": "other",
+            "hasFreeText": true,
+            "freeTextPlaceholder": "Précisez votre préférence de contact"
+          }
+        ]
+      },
+      {
+        "id": "project_summary",
+        "title": "Informations complémentaires",
+        "description": "Décrivez librement votre besoin, votre contexte ou toute information utile.",
+        "inputType": "textarea",
+        "required": false,
+        "allowOther": false,
+        "placeholder": "Décrivez votre projet, vos contraintes, vos attentes, vos idées, votre contexte, ou les questions que vous vous posez."
+      }
+    ]
+  }
+}
+

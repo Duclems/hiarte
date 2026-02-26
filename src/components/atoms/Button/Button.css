@@ -13,6 +13,10 @@
   transform: translateY(-1px);
 }
 
+.page--project-path .btn:hover:not(:disabled) {
+  transform: none;
+}
+
 .btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
@@ -28,13 +32,12 @@
 }
 
 .btn--secondary {
-  background: #FEFDFC;
-  color: #2563eb;
-  border: 2px solid #2563eb;
+  background: transparent;
+  color: var(--color-text);
 }
 
 .btn--secondary:hover:not(:disabled) {
-  background: #EFF7FE;
+  background: var(--color-hover);
 }
 
 .btn--ghost {
