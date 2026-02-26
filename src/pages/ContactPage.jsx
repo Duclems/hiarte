@@ -171,14 +171,12 @@ export function ContactPage() {
 
         <aside className="contact-cta">
           <Text as="h2" variant="h2" className="contact-cta__title">
-            Démarrer un projet
+            {t('contact.ctaTitle')}
           </Text>
           <Text variant="body" className="contact-cta__text">
-            Parcours guidé pour clarifier votre besoin, votre contexte, vos contraintes, votre budget et
-            le type d’accompagnement dont vous avez besoin avant de lancer un projet avec Hiarte.
-          </Text>
+            {t('contact.ctaText')}</Text>
           <Link to="/demarrer-un-projet" className="home-frame" style={{ marginTop: 'var(--space-md)' }}>
-            Démarrer un projet
+            {t('contact.ctaLink')}
           </Link>
         </aside>
       </div>
