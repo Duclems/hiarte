@@ -1,3 +1,40 @@
+@keyframes theme-icon-wiggle {
+  0% {
+    transform: rotate(0deg);
+  }
+  33% {
+    transform: rotate(-40deg);
+  }
+  66% {
+    transform: rotate(40deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes theme-icon-exit {
+  from {
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+  to {
+    transform: rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes theme-icon-enter {
+  from {
+    transform: rotate(-360deg);
+    opacity: 0;
+  }
+  to {
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+}
+
 .theme-toggle {
   display: flex;
   align-items: center;
@@ -13,6 +50,23 @@
   color: var(--color-btn-active-text);
   cursor: pointer;
   transition: all 0.2s ease;
+}
+
+.theme-toggle svg {
+  display: block;
+  transition: transform 0.2s ease;
+}
+
+.theme-toggle:not(.theme-toggle--exit):not(.theme-toggle--enter):hover svg {
+  animation: theme-icon-wiggle 0.4s ease-in-out;
+}
+
+.theme-toggle--exit svg {
+  animation: theme-icon-exit 0.35s ease-in forwards;
+}
+
+.theme-toggle--enter svg {
+  animation: theme-icon-enter 0.35s ease-out forwards;
 }
 
 .theme-toggle:hover {

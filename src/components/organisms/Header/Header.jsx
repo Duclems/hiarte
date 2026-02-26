@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { NavButton } from '../../molecules/NavButton'
@@ -7,6 +8,8 @@ import './Header.css'
 
 export function Header() {
   const { t } = useTranslation()
+  const [isLogoSpinning, setIsLogoSpinning] = useState(false)
+  const [spinDirection, setSpinDirection] = useState(1)
   const navItems = [
     { path: '/', label: t('nav.home') },
     { path: '/projects', label: t('nav.projects') },
@@ -22,10 +25,20 @@ export function Header() {
           </NavButton>
         ))}
       </nav>
-      <Link to="/" className="header__center" aria-label={t('header.logoLabel')}>
+      <Link
+        to="/"
+        className="header__center"
+        aria-label={t('header.logoLabel')}
+        onClick={() => {
+          setSpinDirection(Math.random() < 0.5 ? -1 : 1)
+          setIsLogoSpinning(true)
+        }}
+      >
         <svg
-          className="header__logo"
+          className={`header__logo${isLogoSpinning ? ' header__logo--spin' : ''}`}
+          style={isLogoSpinning ? { '--logo-spin-direction': spinDirection } : undefined}
           viewBox="0 0 500 500"
+          onAnimationEnd={() => setIsLogoSpinning(false)}
           xmlns="http://www.w3.org/2000/svg"
           aria-hidden
         >

@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useTheme } from '../../../contexts/ThemeContext'
 import './ThemeToggle.css'
@@ -5,22 +6,47 @@ import './ThemeToggle.css'
 export function ThemeToggle() {
   const { t } = useTranslation()
   const { theme, toggleTheme } = useTheme()
+  const [isExiting, setIsExiting] = useState(false)
+  const [isEntering, setIsEntering] = useState(false)
   const isLight = theme === 'light'
+  const isTransitioning = isExiting || isEntering
+
+  const handleClick = () => {
+    if (isTransitioning) return
+    setIsExiting(true)
+  }
+
+  const handleAnimationEnd = () => {
+    if (isExiting) {
+      setIsExiting(false)
+      toggleTheme()
+      setIsEntering(true)
+    } else if (isEntering) {
+      setIsEntering(false)
+    }
+  }
+
+  const buttonClass = [
+    'theme-toggle',
+    isExiting && 'theme-toggle--exit',
+    isEntering && 'theme-toggle--enter',
+  ].filter(Boolean).join(' ')
 
   return (
     <button
       type="button"
-      className="theme-toggle"
-      onClick={toggleTheme}
+      className={buttonClass}
+      onClick={handleClick}
+      disabled={isTransitioning}
       aria-label={isLight ? t('a11y.themeToDark') : t('a11y.themeToLight')}
       title={isLight ? t('a11y.themeDarkTitle') : t('a11y.themeLightTitle')}
     >
       {isLight ? (
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" onAnimationEnd={handleAnimationEnd}>
           <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
         </svg>
       ) : (
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" onAnimationEnd={handleAnimationEnd}>
           <circle cx="12" cy="12" r="5" />
           <line x1="12" y1="1" x2="12" y2="3" />
           <line x1="12" y1="21" x2="12" y2="23" />
