@@ -1,9 +1,11 @@
 import { useState, useEffect, useRef } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Text } from '../components/atoms/Text'
 import projectPathConfig from '../config/projectPath.json'
 import { Button } from '../components/atoms/Button'
 
 const projectPath = projectPathConfig.projectPath
+const adaptiveFlow = projectPath.adaptiveFlow || null
 const rawSteps = projectPath.steps || []
 const projectSummaryStep = rawSteps.find((step) => step.id === 'project_summary')
 const baseSteps = rawSteps.filter((step) => step.id !== 'project_summary')
@@ -17,12 +19,14 @@ const reviewStep = {
 const steps = [...baseSteps, reviewStep, projectSummaryStep].filter(Boolean)
 
 export function ProjectPathPage() {
+  const { t, i18n } = useTranslation()
   const [currentStepIndex, setCurrentStepIndex] = useState(0)
   const [answers, setAnswers] = useState({})
   const [isOptionsOpen, setIsOptionsOpen] = useState(false)
   const [hasStarted, setHasStarted] = useState(false)
   const optionsRef = useRef(null)
   const [contactStatus, setContactStatus] = useState('idle')
+  const [toast, setToast] = useState(null)
   const [contactForm, setContactForm] = useState({
     firstName: '',
     lastName: '',
@@ -35,14 +39,103 @@ export function ProjectPathPage() {
     return (
       <div className="page">
         <Text as="h1" variant="h1" className="page__title">
-          {projectPath.title}
+          {t('projectPath.title')}
         </Text>
-        <Text variant="body">Aucun parcours n’est configuré pour le moment.</Text>
+        <Text variant="body">{t('projectPath.noConfig')}</Text>
       </div>
     )
   }
 
   const currentStep = steps[currentStepIndex]
+
+  const getCurrentLang = () => {
+    const lang = i18n.language || 'fr'
+    return lang.startsWith('en') ? 'en' : 'fr'
+  }
+
+  const getStepTitle = (step) => {
+    if (!step) return ''
+    const lang = getCurrentLang()
+    if (lang === 'en' && step.title_en) return step.title_en
+    return step.title
+  }
+
+  const getStepDescription = (step) => {
+    if (!step) return ''
+    const lang = getCurrentLang()
+    if (lang === 'en' && step.description_en) return step.description_en
+    return step.description || ''
+  }
+
+  const getOptionLabel = (option) => {
+    if (!option) return ''
+    const lang = getCurrentLang()
+    if (lang === 'en' && option.label_en) return option.label_en
+    return option.label
+  }
+
+  const getFreeTextPlaceholder = (option) => {
+    if (!option) return ''
+    const lang = getCurrentLang()
+    if (lang === 'en' && option.freeTextPlaceholder_en) return option.freeTextPlaceholder_en
+    return option.freeTextPlaceholder || ''
+  }
+
+  const buildFrenchAnswers = () => {
+    const result = {}
+
+    rawSteps.forEach((step) => {
+      if (!step || step.id === 'project_summary') return
+
+      const value = answers[step.id]
+      const freeTextKey = `${step.id}__freeText`
+      const freeTextValue = answers[freeTextKey]
+
+      let label = 'Non renseigné'
+
+      if (step.options && step.options.length > 0) {
+        if (value) {
+          const opt = step.options.find((o) => o.value === value)
+          const baseLabel = opt ? opt.label : String(value)
+          if (opt && opt.hasFreeText && freeTextValue) {
+            label = `${baseLabel} — ${String(freeTextValue)}`
+          } else if (freeTextValue) {
+            label = `${baseLabel} — ${String(freeTextValue)}`
+          } else {
+            label = baseLabel
+          }
+        }
+      } else if (step.inputType === 'textarea' || step.id === 'project_features') {
+        if (value && String(value).trim().length > 0) {
+          label = String(value)
+        }
+      } else if (value) {
+        label = String(value)
+      }
+
+      result[step.title] = label
+    })
+
+    return result
+  }
+
+  useEffect(() => {
+    if (!toast) return
+    const timer = setTimeout(() => setToast(null), 4000)
+    return () => clearTimeout(timer)
+  }, [toast])
+
+  const getActiveProfile = () => {
+    if (!adaptiveFlow || !adaptiveFlow.profiles) return null
+    const projectType = answers.project_type
+    if (!projectType) return null
+
+    return adaptiveFlow.profiles.find((profile) => {
+      const trigger = profile.trigger
+      if (!trigger || trigger.stepId !== 'project_type') return false
+      return Array.isArray(trigger.includes) && trigger.includes.includes(projectType)
+    })
+  }
 
   useEffect(() => {
     setIsOptionsOpen(false)
@@ -65,7 +158,8 @@ export function ProjectPathPage() {
 
   const handleContactChange = (event) => {
     const { name, value } = event.target
-    setContactForm((prev) => ({ ...prev, [name]: value }))
+    const nextValue = name === 'phone' ? value.replace(/\D/g, '') : value
+    setContactForm((prev) => ({ ...prev, [name]: nextValue }))
   }
 
   const handleContactSubmit = async (event) => {
@@ -87,12 +181,13 @@ export function ProjectPathPage() {
           Accept: 'application/json',
         },
         body: JSON.stringify({
-          firstName: contactForm.firstName,
-          lastName: contactForm.lastName,
+          prenom: contactForm.firstName,
+          nom: contactForm.lastName,
           email: contactForm.email,
-          phone: contactForm.phone,
-          message: contactForm.message,
-          projectPathAnswers: answers,
+          telephone: contactForm.phone,
+          description: contactForm.message,
+          reponsesParcours: buildFrenchAnswers(),
+          langue: 'fr',
         }),
       })
 
@@ -101,6 +196,7 @@ export function ProjectPathPage() {
       }
 
       setContactStatus('success')
+      setToast({ type: 'success', message: t('projectPath.successMessage') })
       setContactForm({
         firstName: '',
         lastName: '',
@@ -110,6 +206,7 @@ export function ProjectPathPage() {
       })
     } catch (error) {
       setContactStatus('error')
+      setToast({ type: 'error', message: t('projectPath.errorMessage') })
     }
   }
 
@@ -117,15 +214,51 @@ export function ProjectPathPage() {
     setAnswers((prev) => ({ ...prev, [stepId]: value }))
   }
 
+  const shouldSkipStep = (step) => {
+    if (!step) return false
+    if (step.id === 'project_review') return false
+
+    const profile = getActiveProfile()
+    if (!profile) return false
+
+    const { showSteps, hideSteps } = profile
+
+    if (Array.isArray(hideSteps) && hideSteps.includes(step.id)) {
+      return true
+    }
+
+    if (Array.isArray(showSteps) && showSteps.length > 0 && !showSteps.includes(step.id)) {
+      return true
+    }
+
+    return false
+  }
+
+  const getNextIndex = (index) => {
+    let next = index + 1
+    while (next < steps.length && shouldSkipStep(steps[next])) {
+      next += 1
+    }
+    return next
+  }
+
+  const getPreviousIndex = (index) => {
+    let prev = index - 1
+    while (prev >= 0 && shouldSkipStep(steps[prev])) {
+      prev -= 1
+    }
+    return prev
+  }
+
   const handleNext = () => {
     if (currentStepIndex < steps.length - 1) {
-      setCurrentStepIndex((index) => index + 1)
+      setCurrentStepIndex((index) => getNextIndex(index))
     }
   }
 
   const handlePrevious = () => {
     if (currentStepIndex > 0) {
-      setCurrentStepIndex((index) => index - 1)
+      setCurrentStepIndex((index) => getPreviousIndex(index))
     }
   }
 
@@ -168,12 +301,12 @@ export function ProjectPathPage() {
         <div className="project-review">
           {stepsToSummarize.map((s) => {
             const value = answers[s.id]
-            let displayValue = 'Non renseigné'
+            let displayValue = t('projectPath.notProvided')
 
             if (value) {
               if (s.options && s.options.length > 0) {
                 const opt = s.options.find((o) => o.value === value)
-                displayValue = opt ? opt.label : String(value)
+                displayValue = opt ? getOptionLabel(opt) : String(value)
               } else {
                 displayValue = String(value)
               }
@@ -182,7 +315,7 @@ export function ProjectPathPage() {
             return (
               <div key={s.id} className="project-review__item">
                 <Text as="h3" variant="h3" className="project-review__label">
-                  {s.title}
+                  {getStepTitle(s)}
                 </Text>
                 <Text as="p" variant="body" className="project-review__value">
                   {displayValue}
@@ -203,7 +336,7 @@ export function ProjectPathPage() {
         >
           <div className="contact-field">
             <Text as="label" variant="body" htmlFor="firstName">
-              First Name *
+              Prénom *
             </Text>
             <input
               id="firstName"
@@ -218,7 +351,7 @@ export function ProjectPathPage() {
 
           <div className="contact-field">
             <Text as="label" variant="body" htmlFor="lastName">
-              Last Name *
+              Nom *
             </Text>
             <input
               id="lastName"
@@ -248,13 +381,13 @@ export function ProjectPathPage() {
 
           <div className="contact-field">
             <Text as="label" variant="body" htmlFor="phone">
-              Phone Number *
+              Téléphone (optionnel)
             </Text>
             <input
               id="phone"
               name="phone"
               type="tel"
-              required
+              inputMode="numeric"
               value={contactForm.phone}
               onChange={handleContactChange}
               className="contact-input"
@@ -283,7 +416,7 @@ export function ProjectPathPage() {
         <textarea
           className="contact-textarea"
           rows={6}
-          placeholder="Décrivez les fonctionnalités souhaitées"
+          placeholder={t('projectPath.featuresPlaceholder')}
           value={answers[step.id] || ''}
           onChange={(e) => updateAnswer(step.id, e.target.value)}
         />
@@ -304,15 +437,28 @@ export function ProjectPathPage() {
 
     if (step.options && step.options.length > 0) {
       const selected = answers[step.id] || ''
-      const sortedOptions = [...step.options].sort((a, b) => {
+
+      let options = step.options
+      const profile = getActiveProfile()
+      if (profile && profile.allowedOptions && profile.allowedOptions[step.id]) {
+        const allowed = new Set(profile.allowedOptions[step.id])
+        options = options.filter((opt) => allowed.has(opt.value))
+      }
+
+      const sortedOptions = [...options].sort((a, b) => {
         if (a.value === 'other' && b.value === 'other') return 0
         if (a.value === 'other') return 1
         if (b.value === 'other') return -1
-        return a.label.localeCompare(b.label, 'fr', { sensitivity: 'base' })
+        const labelA = getOptionLabel(a)
+        const labelB = getOptionLabel(b)
+        const locale = getCurrentLang()
+        return labelA.localeCompare(labelB, locale, { sensitivity: 'base' })
       })
       const selectedOption = sortedOptions.find((opt) => opt.value === selected)
       const freeTextKey = `${step.id}__freeText`
-      const selectedLabel = selectedOption ? selectedOption.label : 'Sélectionnez une option'
+      const selectedLabel = selectedOption
+        ? getOptionLabel(selectedOption)
+        : t('projectPath.selectPlaceholder')
 
       return (
         <div className="project-step__options" ref={optionsRef}>
@@ -337,7 +483,7 @@ export function ProjectPathPage() {
                     setIsOptionsOpen(false)
                   }}
                 >
-                  {opt.label}
+                  {getOptionLabel(opt)}
                 </button>
               ))}
             </div>
@@ -346,7 +492,7 @@ export function ProjectPathPage() {
             <input
               type="text"
               className="contact-input"
-              placeholder={selectedOption.freeTextPlaceholder}
+              placeholder={getFreeTextPlaceholder(selectedOption)}
               value={answers[freeTextKey] || ''}
               onChange={(e) => updateAnswer(freeTextKey, e.target.value)}
               style={{ marginTop: 'var(--space-sm)' }}
@@ -361,13 +507,18 @@ export function ProjectPathPage() {
 
   return (
     <div className="page page--project-path">
+      {toast && (
+        <div className={`project-toast project-toast--${toast.type}`}>
+          {toast.message}
+        </div>
+      )}
       {!hasStarted && (
         <>
           <Text as="h1" variant="h1" className="page__title">
-            {projectPath.title}
+            {t('projectPath.title')}
           </Text>
           <Text variant="lead" className="page__subtitle">
-            {projectPath.description}
+            {t('projectPath.subtitle')}
           </Text>
 
           {projectPath.positioning.content && (
@@ -378,7 +529,7 @@ export function ProjectPathPage() {
 
           <div className="project-start">
             <Button variant="primary" onClick={() => setHasStarted(true)}>
-              Démarrer le projet accompagné
+              {t('projectPath.startCta')}
             </Button>
           </div>
         </>
@@ -388,11 +539,20 @@ export function ProjectPathPage() {
         <div className="project-path">
         <div className="project-step">
           <Text as="h1" variant="h1" className="project-step__title">
-            {currentStep.title}
+            {currentStep.id === 'project_review'
+              ? t('projectPath.reviewTitle')
+              : getStepTitle(currentStep)}
           </Text>
-          {currentStep.description && (
+          {(() => {
+            if (currentStep.id === 'project_review') {
+              return t('projectPath.reviewDescription')
+            }
+            return getStepDescription(currentStep)
+          })() && (
             <Text as="p" variant="lead" className="project-step__description">
-              {currentStep.description}
+              {currentStep.id === 'project_review'
+                ? t('projectPath.reviewDescription')
+                : getStepDescription(currentStep)}
             </Text>
           )}
 
@@ -402,7 +562,7 @@ export function ProjectPathPage() {
             <div className="project-step__actions-left">
               {currentStepIndex > 0 && (
                 <Button variant="secondary" onClick={handlePrevious}>
-                  Étape précédente
+                  {t('projectPath.previousStep')}
                 </Button>
               )}
             </div>
@@ -413,7 +573,7 @@ export function ProjectPathPage() {
                   onClick={handleNext}
                   disabled={!isStepValid()}
                 >
-                  Étape suivante
+                  {t('projectPath.nextStep')}
                 </Button>
               )}
               {isLastStep && (
@@ -423,7 +583,9 @@ export function ProjectPathPage() {
                   variant="primary"
                   disabled={contactStatus === 'submitting'}
                 >
-                  {contactStatus === 'submitting' ? 'Envoi…' : 'Envoyer mon projet'}
+                  {contactStatus === 'submitting'
+                    ? t('projectPath.sending')
+                    : t('projectPath.sendProject')}
                 </Button>
               )}
             </div>
@@ -431,12 +593,12 @@ export function ProjectPathPage() {
 
           {isLastStep && contactStatus === 'success' && (
             <Text variant="body" style={{ color: 'var(--color-text-muted)', marginTop: 'var(--space-sm)' }}>
-              Votre message a bien été envoyé.
+              {t('projectPath.successMessage')}
             </Text>
           )}
           {isLastStep && contactStatus === 'error' && (
             <Text variant="body" style={{ color: 'var(--color-text-muted)', marginTop: 'var(--space-sm)' }}>
-              Une erreur est survenue. Vous pouvez aussi écrire à contact@hiarte.fr.
+              {t('projectPath.errorMessage')}
             </Text>
           )}
         </div>
