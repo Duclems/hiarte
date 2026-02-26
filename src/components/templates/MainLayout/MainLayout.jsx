@@ -9,6 +9,9 @@ export function MainLayout() {
   return (
     <div className="main-layout">
       <HeadMeta />
+      <a href="#main-content" className="skip-link">
+        Aller au contenu principal
+      </a>
       <div className="main-layout__background">
         <LightRays
           raysOrigin="top-right"
@@ -26,7 +29,7 @@ export function MainLayout() {
         />
       </div>
       <Header />
-      <main className="main-layout__content">
+      <main id="main-content" className="main-layout__content">
         <Outlet />
       </main>
       <Footer />

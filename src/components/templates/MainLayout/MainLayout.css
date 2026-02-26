@@ -5,6 +5,28 @@
   flex-direction: column;
 }
 
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  z-index: 10000;
+}
+
+.skip-link:focus {
+  left: var(--space-lg);
+  top: var(--space-sm);
+  width: auto;
+  height: auto;
+  padding: var(--space-xs) var(--space-sm);
+  background: var(--color-btn-active-bg);
+  color: var(--color-btn-active-text);
+  border-radius: 9999px;
+  text-decoration: none;
+}
+
 .main-layout__background {
   display: none; /* animation de fond masquée */
   position: fixed;

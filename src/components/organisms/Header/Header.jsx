@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { createPortal } from 'react-dom'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
@@ -15,6 +15,9 @@ export function Header() {
   const [isLogoSpinning, setIsLogoSpinning] = useState(false)
   const [spinDirection, setSpinDirection] = useState(1)
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
+  const menuButtonRef = useRef(null)
+  const drawerRef = useRef(null)
+  const closeButtonRef = useRef(null)
   const navItems = [
     { path: '/', label: t('nav.home') },
     { path: '/projects', label: t('nav.projects') },
@@ -36,6 +39,63 @@ export function Header() {
     }
   }, [isDrawerOpen])
 
+  useEffect(() => {
+    if (!isDrawerOpen) return
+    const drawerElement = drawerRef.current
+    if (!drawerElement) return
+
+    const previousActiveElement = document.activeElement
+
+    const focusableSelectors =
+      'a[href], button, textarea, input, select, [tabindex]:not([tabindex="-1"])'
+    const focusableElements = Array.from(
+      drawerElement.querySelectorAll(focusableSelectors)
+    ).filter(
+      (el) =>
+        !el.hasAttribute('disabled') &&
+        el.getAttribute('aria-hidden') !== 'true'
+    )
+
+    if (focusableElements.length === 0) return
+
+    const firstElement = focusableElements[0]
+    const lastElement = focusableElements[focusableElements.length - 1]
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Tab') {
+        if (event.shiftKey) {
+          if (document.activeElement === firstElement) {
+            event.preventDefault()
+            lastElement.focus()
+          }
+        } else {
+          if (document.activeElement === lastElement) {
+            event.preventDefault()
+            firstElement.focus()
+          }
+        }
+      } else if (event.key === 'Escape') {
+        event.preventDefault()
+        closeDrawer()
+      }
+    }
+
+    if (closeButtonRef.current) {
+      closeButtonRef.current.focus()
+    } else {
+      firstElement.focus()
+    }
+
+    drawerElement.addEventListener('keydown', handleKeyDown)
+
+    return () => {
+      drawerElement.removeEventListener('keydown', handleKeyDown)
+      if (previousActiveElement && previousActiveElement.focus) {
+        previousActiveElement.focus()
+      }
+    }
+  }, [isDrawerOpen])
+
   return (
     <header className="header">
       <button
@@ -43,13 +103,15 @@ export function Header() {
         className="header__menu-btn"
         aria-label={t('header.openMenu')}
         aria-expanded={isDrawerOpen}
+        aria-controls="mobile-drawer"
         onClick={() => setIsDrawerOpen(true)}
+        ref={menuButtonRef}
       >
         <svg className="header__menu-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
           <path d="M4 6H20M4 12H20M4 18H20" />
         </svg>
       </button>
-      <nav className="header__nav" aria-hidden={isDrawerOpen}>
+      <nav className="header__nav" aria-hidden={isDrawerOpen} aria-label={t('nav.main')}>
         {navItems.map(({ path, label }) => (
           <NavButton key={path} to={path}>
             {label}
@@ -104,6 +166,8 @@ export function Header() {
             onClick={closeDrawer}
           />
           <aside
+            id="mobile-drawer"
+            ref={drawerRef}
             className={`header__drawer ${isDrawerOpen ? 'header__drawer--open' : ''}`}
             style={{ zIndex: DRAWER_Z_INDEX }}
             aria-label={t('nav.menu')}
@@ -139,11 +203,12 @@ export function Header() {
                 className="header__drawer-close"
                 aria-label={t('header.closeMenu')}
                 onClick={closeDrawer}
+                ref={closeButtonRef}
               >
                 ×
               </button>
             </div>
-            <nav className="header__drawer-nav">
+            <nav className="header__drawer-nav" aria-label={t('nav.mainMobile')}>
               {drawerNavItems.map(({ path, label }) => (
                 <NavButton key={path} to={path} onClick={closeDrawer}>
                   {label}
