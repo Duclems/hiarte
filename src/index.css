@@ -1,3 +1,12 @@
+/* Font face MuseoModerno Black (logo / accents) */
+@font-face {
+  font-family: 'MuseoModerno-Black';
+  src: url('/font/MuseoModerno-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Nombre d'or φ = 1.61803398875 — échelle de proportions */
 :root {
   --phi: 1.61803398875;
