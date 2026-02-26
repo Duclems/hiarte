@@ -60,7 +60,7 @@
   user-select: none;
 }
 
-@media (max-width: 915px) {
+@media (max-width: 925px) {
   .footer {
     padding: var(--space-md) var(--space-lg);
   }

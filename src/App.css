@@ -181,7 +181,7 @@
   margin-bottom: var(--space-lg);
 }
 
-@media (max-width: 915px) {
+@media (max-width: 925px) {
   .main-layout__content:has(.page--home) {
     padding: 0 var(--space-lg);
   }
@@ -213,7 +213,7 @@
 }
 
 /* Téléphone : espacements réduits, image en bas de page (au-dessus du footer) */
-@media (max-width: 800px) {
+@media (max-width: 925px) {
   .main-layout__content:has(.page--home) {
     padding: var(--space-md) var(--space-md) 0;
   }
@@ -241,7 +241,7 @@
   .home-center__img {
     width: 100%;
     max-width: min(95%, 56rem);
-    max-height: 45vh;
+    max-height: 65vh;
     height: auto;
     object-fit: contain;
     object-position: bottom;

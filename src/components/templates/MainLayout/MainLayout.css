@@ -23,7 +23,7 @@
   width: 100%;
 }
 
-@media (max-width: 915px) {
+@media (max-width: 925px) {
   .main-layout__content {
     padding: var(--space-md) var(--space-lg);
   }

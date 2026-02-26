@@ -220,7 +220,7 @@
   margin-top: var(--space-sm);
 }
 
-@media (max-width: 915px) {
+@media (max-width: 925px) {
   .header {
     flex-wrap: wrap;
     padding: var(--space-sm) var(--space-lg);
@@ -256,7 +256,7 @@
 }
 
 /* Version téléphone : menu hamburger + drawer à gauche */
-@media (max-width: 768px) {
+@media (max-width: 925px) {
   .header__menu-btn {
     display: flex;
     order: 0;
