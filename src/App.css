@@ -181,6 +181,55 @@
   margin-bottom: var(--space-lg);
 }
 
+/* Page contact */
+.contact-page {
+  max-width: 32rem;
+}
+
+.contact-form {
+  margin-top: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  max-width: 100%;
+}
+
+.contact-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.contact-input,
+.contact-textarea {
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-size: var(--text-base);
+  line-height: var(--line-height);
+}
+
+.contact-input:focus,
+.contact-textarea:focus {
+  outline: none;
+  border-color: var(--color-btn-active-bg);
+  box-shadow: 0 0 0 1px var(--color-btn-active-bg);
+}
+
+.contact-textarea {
+  resize: vertical;
+  min-height: 7rem;
+}
+
+.contact-actions {
+  margin-top: var(--space-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
 @media (max-width: 925px) {
   .main-layout__content:has(.page--home) {
     padding: 0 var(--space-lg);
