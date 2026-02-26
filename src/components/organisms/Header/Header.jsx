@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { createPortal } from 'react-dom'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { NavButton } from '../../molecules/NavButton'
@@ -6,19 +7,49 @@ import { LanguageSelector } from '../../molecules/LanguageSelector'
 import { ThemeToggle } from '../../molecules/ThemeToggle'
 import './Header.css'
 
+const DRAWER_Z_INDEX = 2147483647
+const BACKDROP_Z_INDEX = 2147483646
+
 export function Header() {
   const { t } = useTranslation()
   const [isLogoSpinning, setIsLogoSpinning] = useState(false)
   const [spinDirection, setSpinDirection] = useState(1)
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false)
   const navItems = [
     { path: '/', label: t('nav.home') },
     { path: '/projects', label: t('nav.projects') },
     { path: '/contact', label: t('nav.contact') },
   ]
+  const drawerNavItems = navItems
+  const drawerFooterItems = [{ path: '/about', label: t('nav.about') }]
+
+  const closeDrawer = () => setIsDrawerOpen(false)
+
+  useEffect(() => {
+    if (isDrawerOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [isDrawerOpen])
 
   return (
     <header className="header">
-      <nav className="header__nav">
+      <button
+        type="button"
+        className="header__menu-btn"
+        aria-label={t('header.openMenu')}
+        aria-expanded={isDrawerOpen}
+        onClick={() => setIsDrawerOpen(true)}
+      >
+        <svg className="header__menu-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+          <path d="M4 6H20M4 12H20M4 18H20" />
+        </svg>
+      </button>
+      <nav className="header__nav" aria-hidden={isDrawerOpen}>
         {navItems.map(({ path, label }) => (
           <NavButton key={path} to={path}>
             {label}
@@ -54,11 +85,57 @@ export function Header() {
           />
         </svg>
       </Link>
-      <div className="header__actions">
-        <NavButton to="/about">{t('nav.about')}</NavButton>
-        <LanguageSelector />
+      <div className="header__actions" aria-hidden={isDrawerOpen}>
+        <span className="header__action-about">
+          <NavButton to="/about">{t('nav.about')}</NavButton>
+        </span>
+        <span className="header__action-lang">
+          <LanguageSelector />
+        </span>
         <ThemeToggle />
       </div>
+
+      {createPortal(
+        <>
+          <div
+            className={`header__drawer-backdrop ${isDrawerOpen ? 'header__drawer-backdrop--open' : ''}`}
+            style={{ zIndex: BACKDROP_Z_INDEX }}
+            aria-hidden={!isDrawerOpen}
+            onClick={closeDrawer}
+          />
+          <aside
+            className={`header__drawer ${isDrawerOpen ? 'header__drawer--open' : ''}`}
+            style={{ zIndex: DRAWER_Z_INDEX }}
+            aria-label={t('nav.menu')}
+            aria-hidden={!isDrawerOpen}
+          >
+            <button
+              type="button"
+              className="header__drawer-close"
+              aria-label={t('header.closeMenu')}
+              onClick={closeDrawer}
+            >
+              ×
+            </button>
+            <nav className="header__drawer-nav">
+              {drawerNavItems.map(({ path, label }) => (
+                <NavButton key={path} to={path} onClick={closeDrawer}>
+                  {label}
+                </NavButton>
+              ))}
+            </nav>
+            <div className="header__drawer-footer">
+              {drawerFooterItems.map(({ path, label }) => (
+                <NavButton key={path} to={path} onClick={closeDrawer}>
+                  {label}
+                </NavButton>
+              ))}
+              <LanguageSelector />
+            </div>
+          </aside>
+        </>,
+        document.body
+      )}
     </header>
   )
 }
