@@ -25,7 +25,9 @@ export function HomePage() {
           </div>
         </div>
         <p className="home-hero__tagline">
-          {t('home.tagline')}
+          <span>{t('home.taglineLine1')}</span>
+          <br />
+          <span>{t('home.taglineLine2')}</span>
         </p>
         <section className="home-intro" aria-label={t('home.introLabel')}>
           <p>
