@@ -525,6 +525,37 @@
   transition: background-color 0.3s ease;
 }
 
-[data-theme="dark"] .project-card {
+[data-theme='dark'] .project-card {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.project-card--hi-tts {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.project-card__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.project-card__logo {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: var(--color-text);
+  -webkit-mask-image: url('/hi-tts/hi-tts-animated.svg');
+  mask-image: url('/hi-tts/hi-tts-animated.svg');
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
 }

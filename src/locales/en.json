@@ -27,7 +27,12 @@
         "title": "Our Projects",
         "subtitle": "Explore our portfolio of creative work.",
         "project": "Project",
-        "description": "Project description"
+        "description": "Project description",
+        "hiTts": {
+            "title": "Hi‑TTS",
+            "summary": "A desktop Text‑to‑Speech app designed for Twitch streamers who want to reliably connect their rewards to ElevenLabs voices.",
+            "cta": "Discover Hi‑TTS"
+        }
     },
     "about": {
         "title": "About",
@@ -60,6 +65,32 @@
         "sending": "Sending…",
         "successMessage": "Your message has been sent successfully.",
         "errorMessage": "An error occurred. You can also write to contact@hiarte.fr."
+    },
+    "projectHiTts": {
+        "title": "Hi‑TTS, TTS for your Twitch rewards",
+        "intro": "Hi‑TTS is a desktop application designed for Twitch streamers who want to add high‑quality Text‑to‑Speech (TTS) to their rewards without technical headaches.",
+        "twitchTitle": "Connect to your Twitch account",
+        "twitchBody1": "Hi‑TTS connects to your Twitch account to read your custom rewards (Channel Points / rewards).",
+        "twitchBody2": "The app tracks viewers’ redeems in real time, stores them in a history and shows you who used which reward, when, and with which message.",
+        "voiceTitle": "Linked with ElevenLabs voices",
+        "voiceBody1": "You enter your ElevenLabs API key once inside the app.",
+        "voiceBody2": "For each reward, you can choose a voice, a model and finely tune parameters such as speed, stability or style.",
+        "voiceBody3": "When a viewer uses a configured reward, Hi‑TTS generates and plays the voice automatically during a short window of time after the redeem.",
+        "rewardsTitle": "Fine‑grained reward management",
+        "rewardsBody1": "You can create a ready‑to‑use Hi‑TTS reward directly from the app, with text provided by the viewer.",
+        "rewardsBody2": "Each reward can have its own voice configuration: for example a “deep voice” reward, another “robot voice”, and so on.",
+        "rewardsBody3": "The history lets you review which messages were read and, when needed, recover the surrounding chat and emote context.",
+        "uxTitle": "Languages and user experience",
+        "uxBody1": "Hi‑TTS is multilingual (currently French / English) with a language selector visible from the login screen and in the settings.",
+        "uxBody2": "Interface copy, help messages and explanations are translated so you can use Hi‑TTS in the language you feel most comfortable with.",
+        "privacyTitle": "Transparency and privacy",
+        "privacyBody1": "The Twitch token and ElevenLabs key are stored locally on your machine, only so the app can work without constantly asking for your credentials.",
+        "privacyBody2": "None of this data is sent to a proprietary server: Hi‑TTS only talks to the official APIs of Twitch and ElevenLabs.",
+        "privacyBody3": "A dedicated “Settings / About” screen clearly explains how this data is handled and highlights the most important points of the privacy policy.",
+        "licenseTitle": "A clear usage framework",
+        "licenseBody1": "During installation, a license agreement explains in simple terms what you are allowed to do with the app and what Hiarte does not guarantee (no promise of availability, no responsibility in case of streaming issues, etc.).",
+        "summaryTitle": "In a nutshell",
+        "summaryBody": "Hi‑TTS cleanly connects your Twitch rewards to ElevenLabs voices, with a clear interface, multilingual experience and a transparent approach to how your data is – or is not – used."
     },
     "legal": {
         "title": "Legal notice",

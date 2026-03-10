@@ -5,4 +5,7 @@ export default defineConfig({
   plugins: [react()],
   // Base pour GitHub Pages (project site: username.github.io/hiarte/)
   base: process.env.NODE_ENV === 'production' ? '/hiarte/' : '/',
+  server: {
+    port: 55500,
+  },
 })

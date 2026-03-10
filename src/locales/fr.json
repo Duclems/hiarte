@@ -1,1 +1,145 @@
-{"nav":{"home":"Accueil","projects":"Projets","about":"À propos","contact":"Contact","menu":"Menu","main":"Navigation principale","mainMobile":"Navigation principale mobile"},"home":{"title":"Bienvenue sur Hiarte","subtitle":"Découvrez nos projets et notre univers créatif.","seeProjects":"Voir les projets","heroLine1":"Design","heroLine2":"Code","heroLine3":"Impact","taglineLine1":"Façonnons des solutions numériques","taglineLine2":"avec une identité forte","intro":"Hiarte est une micro entreprise spécialisée dans la création de solutions numériques sur mesure : développement d'applications, automatisation et création d'outils.","ctaExplore":"Explorer les services","ctaStart":"Démarrer un projet","introLabel":"Présentation","heroImageAlt":"Deux mains sculptées, l'une blanche et l'autre bronze, symbolisant la rencontre entre design et code"},"projects":{"title":"Nos Projets","subtitle":"Explorez notre portfolio de réalisations créatives.","project":"Projet","description":"Description du projet"},"about":{"title":"À propos","subtitle":"Nous sommes une équipe passionnée par la créativité et l'innovation.","content":"Hiarte est né d'une volonté de fusionner l'art et la technologie pour créer des expériences uniques. Notre approche combine design soigné et solutions techniques performantes."},"contact":{"title":"Contact","subtitle":"Vous avez un projet ? N'hésitez pas à nous contacter.","email":"Email","phone":"Téléphone","sendMessage":"Envoyer un message","ctaTitle":"Démarrer un projet","ctaText":"Parcours guidé pour clarifier votre besoin, votre contexte, vos contraintes, votre budget et le type d'accompagnement dont vous avez besoin avant de lancer un projet avec Hiarte.","ctaLink":"Démarrer un projet"},"projectPath":{"title":"Démarrer un projet accompagné","subtitle":"Parcours guidé permettant de définir les besoins d’un projet, les contraintes, le budget, le délai et les services attendus.","startCta":"Démarrer le projet accompagné","noConfig":"Aucun parcours n’est configuré pour le moment.","reviewTitle":"Récapitulatif du projet","reviewDescription":"Vérifiez vos réponses avant d’envoyer votre projet.","notProvided":"Non renseigné","selectPlaceholder":"Sélectionnez une option","featuresPlaceholder":"Décrivez les fonctionnalités souhaitées","previousStep":"Étape précédente","nextStep":"Étape suivante","sendProject":"Envoyer mon projet","sending":"Envoi…","successMessage":"Votre message a bien été envoyé.","errorMessage":"Une erreur est survenue. Vous pouvez aussi écrire à contact@hiarte.fr."},"legal":{"title":"Mentions légales","subtitle":"Informations légales concernant ce site.","editorTitle":"Éditeur du site","editor":"Ce site est édité par Hiarte, micro-entreprise. Pour toute question relative aux mentions légales, vous pouvez nous contacter via la page Contact.","hostTitle":"Hébergement","host":"Ce site peut être hébergé par un prestataire tiers. Les données sont traitées conformément au RGPD et à la réglementation en vigueur.","rightsTitle":"Propriété intellectuelle","rights":"L'ensemble du contenu de ce site (textes, visuels, structure) est protégé par le droit d'auteur. Toute reproduction non autorisée est interdite."},"privacy":{"title":"Politique de confidentialité","subtitle":"Comment nous traitons vos données.","intro":"Cette politique décrit la collecte et l'utilisation des données sur ce site. Nous nous engageons à protéger votre vie privée.","dataTitle":"Données collectées","data":"Nous pouvons collecter les données que vous nous communiquez volontairement (formulaire de contact, email). Ces données sont utilisées uniquement pour répondre à vos demandes et ne sont pas cédées à des tiers.","cookiesTitle":"Cookies","cookies":"Ce site peut utiliser des cookies techniques nécessaires au fonctionnement (préférences de langue, thème). Aucun cookie publicitaire ou de traçage tiers n'est utilisé par défaut.","rightsTitle":"Vos droits","rights":"Conformément au RGPD, vous disposez d'un droit d'accès, de rectification, de suppression et de portabilité de vos données. Pour les exercer, contactez-nous.","contactTitle":"Nous contacter","contact":"Pour toute question relative à vos données personnelles ou à cette politique : utilisez la page Contact du site."},"footer":{"copyright":"© {{year}} Hiarte. Tous droits réservés.","microEnterprise":"Micro entreprise","legal":"Mentions légales","privacy":"Politique de confidentialité"},"language":{"fr":"Français","en":"English"},"header":{"logoLabel":"Hiarte - Accueil","openMenu":"Ouvrir le menu","closeMenu":"Fermer le menu"},"a11y":{"themeToDark":"Passer au thème sombre","themeToLight":"Passer au thème clair","themeDarkTitle":"Thème sombre","themeLightTitle":"Thème clair","switchToEnglish":"Passer en anglais","switchToFrench":"Passer en français"},"meta":{"title":"Hiarte","description":"Hiarte, micro-entreprise spécialisée dans le design et le développement de solutions numériques sur mesure : applications, automatisation, outils créatifs."}}
+{
+    "nav": {
+        "home": "Accueil",
+        "projects": "Projets",
+        "about": "À propos",
+        "contact": "Contact",
+        "menu": "Menu",
+        "main": "Navigation principale",
+        "mainMobile": "Navigation principale mobile"
+    },
+    "home": {
+        "title": "Bienvenue sur Hiarte",
+        "subtitle": "Découvrez nos projets et notre univers créatif.",
+        "seeProjects": "Voir les projets",
+        "heroLine1": "Design",
+        "heroLine2": "Code",
+        "heroLine3": "Impact",
+        "taglineLine1": "Façonnons des solutions numériques",
+        "taglineLine2": "avec une identité forte",
+        "intro": "Hiarte est une micro entreprise spécialisée dans la création de solutions numériques sur mesure : développement d'applications, automatisation et création d'outils.",
+        "ctaExplore": "Explorer les services",
+        "ctaStart": "Démarrer un projet",
+        "introLabel": "Présentation",
+        "heroImageAlt": "Deux mains sculptées, l'une blanche et l'autre bronze, symbolisant la rencontre entre design et code"
+    },
+    "projects": {
+        "title": "Nos Projets",
+        "subtitle": "Explorez notre portfolio de réalisations créatives.",
+        "project": "Projet",
+        "description": "Description du projet",
+        "hiTts": {
+            "title": "Hi‑TTS",
+            "summary": "Application de Text‑to‑Speech pensée pour les streamers Twitch qui veulent relier proprement leurs rewards à des voix ElevenLabs.",
+            "cta": "Découvrir Hi‑TTS"
+        }
+    },
+    "about": {
+        "title": "À propos",
+        "subtitle": "Nous sommes une équipe passionnée par la créativité et l'innovation.",
+        "content": "Hiarte est né d'une volonté de fusionner l'art et la technologie pour créer des expériences uniques. Notre approche combine design soigné et solutions techniques performantes."
+    },
+    "contact": {
+        "title": "Contact",
+        "subtitle": "Vous avez un projet ? N'hésitez pas à nous contacter.",
+        "email": "Email",
+        "phone": "Téléphone",
+        "sendMessage": "Envoyer un message",
+        "ctaTitle": "Démarrer un projet",
+        "ctaText": "Parcours guidé pour clarifier votre besoin, votre contexte, vos contraintes, votre budget et le type d'accompagnement dont vous avez besoin avant de lancer un projet avec Hiarte.",
+        "ctaLink": "Démarrer un projet"
+    },
+    "projectPath": {
+        "title": "Démarrer un projet accompagné",
+        "subtitle": "Parcours guidé permettant de définir les besoins d’un projet, les contraintes, le budget, le délai et les services attendus.",
+        "startCta": "Démarrer le projet accompagné",
+        "noConfig": "Aucun parcours n’est configuré pour le moment.",
+        "reviewTitle": "Récapitulatif du projet",
+        "reviewDescription": "Vérifiez vos réponses avant d’envoyer votre projet.",
+        "notProvided": "Non renseigné",
+        "selectPlaceholder": "Sélectionnez une option",
+        "featuresPlaceholder": "Décrivez les fonctionnalités souhaitées",
+        "previousStep": "Étape précédente",
+        "nextStep": "Étape suivante",
+        "sendProject": "Envoyer mon projet",
+        "sending": "Envoi…",
+        "successMessage": "Votre message a bien été envoyé.",
+        "errorMessage": "Une erreur est survenue. Vous pouvez aussi écrire à contact@hiarte.fr."
+    },
+    "projectHiTts": {
+        "title": "Hi‑TTS, le TTS pour tes rewards Twitch",
+        "intro": "Hi‑TTS est une application de bureau pensée pour les streamers Twitch qui veulent ajouter facilement du Text‑to‑Speech (TTS) de qualité à leurs rewards, sans complexité technique.",
+        "twitchTitle": "Connexion à ton compte Twitch",
+        "twitchBody1": "Hi‑TTS se connecte à ton compte Twitch pour lire tes récompenses personnalisées (Channel Points / rewards).",
+        "twitchBody2": "L’application suit en temps réel les redeems des viewers, les enregistre dans un historique et te montre qui a utilisé quel reward, quand, et avec quel message.",
+        "voiceTitle": "Lien avec ElevenLabs pour la voix",
+        "voiceBody1": "Tu renseignes ta clé API ElevenLabs une seule fois dans l’app.",
+        "voiceBody2": "Pour chaque reward, tu peux choisir une voix, un modèle et ajuster finement les paramètres comme la vitesse, la stabilité ou le style.",
+        "voiceBody3": "Quand un viewer utilise un reward configuré, Hi‑TTS génère et joue automatiquement la voix pendant une courte fenêtre de temps après le redeem.",
+        "rewardsTitle": "Gestion fine des rewards",
+        "rewardsBody1": "Tu peux créer un reward Hi‑TTS prêt à l’emploi directement depuis l’application, avec un texte à lire fourni par le viewer.",
+        "rewardsBody2": "Chaque reward peut avoir sa propre configuration de voix : par exemple un reward « voix grave », un autre « voix robot », etc.",
+        "rewardsBody3": "L’historique te permet de revoir quels messages ont été lus et, si besoin, de retrouver le contexte du chat et des emotes associées.",
+        "uxTitle": "Langues et expérience utilisateur",
+        "uxBody1": "Hi‑TTS est multilingue (actuellement français / anglais) avec un sélecteur de langue visible dès la page de connexion et dans les paramètres.",
+        "uxBody2": "Les textes d’interface, les messages d’aide et les explications sont traduits pour que tu puisses utiliser l’application dans la langue qui te met le plus à l’aise.",
+        "privacyTitle": "Transparence et confidentialité",
+        "privacyBody1": "Le token Twitch et la clé ElevenLabs sont stockés localement sur ta machine, uniquement pour que l’app puisse fonctionner sans te redemander sans cesse tes accès.",
+        "privacyBody2": "Aucune de ces données n’est renvoyée vers un serveur propriétaire : Hi‑TTS ne communique qu’avec les API officielles de Twitch et d’ElevenLabs.",
+        "privacyBody3": "Un écran « Paramètres / À propos » détaille clairement la façon dont ces données sont gérées et rappelle les points importants de la politique de confidentialité.",
+        "licenseTitle": "Cadre d’utilisation clair",
+        "licenseBody1": "Lors de l’installation, un accord de licence explique simplement ce que tu as le droit de faire avec l’application et ce que Hiarte ne garantit pas (pas de promesse de disponibilité, pas de responsabilité en cas de souci de stream, etc.).",
+        "summaryTitle": "En résumé",
+        "summaryBody": "Hi‑TTS sert à relier proprement tes rewards Twitch à des voix ElevenLabs, avec une interface claire, multilingue et une approche transparente sur ce qui est fait – ou pas fait – avec tes données."
+    },
+    "legal": {
+        "title": "Mentions légales",
+        "subtitle": "Informations légales concernant ce site.",
+        "editorTitle": "Éditeur du site",
+        "editor": "Ce site est édité par Hiarte, micro-entreprise. Pour toute question relative aux mentions légales, vous pouvez nous contacter via la page Contact.",
+        "hostTitle": "Hébergement",
+        "host": "Ce site peut être hébergé par un prestataire tiers. Les données sont traitées conformément au RGPD et à la réglementation en vigueur.",
+        "rightsTitle": "Propriété intellectuelle",
+        "rights": "L'ensemble du contenu de ce site (textes, visuels, structure) est protégé par le droit d'auteur. Toute reproduction non autorisée est interdite."
+    },
+    "privacy": {
+        "title": "Politique de confidentialité",
+        "subtitle": "Comment nous traitons vos données.",
+        "intro": "Cette politique décrit la collecte et l'utilisation des données sur ce site. Nous nous engageons à protéger votre vie privée.",
+        "dataTitle": "Données collectées",
+        "data": "Nous pouvons collecter les données que vous nous communiquez volontairement (formulaire de contact, email). Ces données sont utilisées uniquement pour répondre à vos demandes et ne sont pas cédées à des tiers.",
+        "cookiesTitle": "Cookies",
+        "cookies": "Ce site peut utiliser des cookies techniques nécessaires au fonctionnement (préférences de langue, thème). Aucun cookie publicitaire ou de traçage tiers n'est utilisé par défaut.",
+        "rightsTitle": "Vos droits",
+        "rights": "Conformément au RGPD, vous disposez d'un droit d'accès, de rectification, de suppression et de portabilité de vos données. Pour les exercer, contactez-nous.",
+        "contactTitle": "Nous contacter",
+        "contact": "Pour toute question relative à vos données personnelles ou à cette politique : utilisez la page Contact du site."
+    },
+    "footer": {
+        "copyright": "© {{year}} Hiarte. Tous droits réservés.",
+        "microEnterprise": "Micro entreprise",
+        "legal": "Mentions légales",
+        "privacy": "Politique de confidentialité"
+    },
+    "language": {
+        "fr": "Français",
+        "en": "English"
+    },
+    "header": {
+        "logoLabel": "Hiarte - Accueil",
+        "openMenu": "Ouvrir le menu",
+        "closeMenu": "Fermer le menu"
+    },
+    "a11y": {
+        "themeToDark": "Passer au thème sombre",
+        "themeToLight": "Passer au thème clair",
+        "themeDarkTitle": "Thème sombre",
+        "themeLightTitle": "Thème clair",
+        "switchToEnglish": "Passer en anglais",
+        "switchToFrench": "Passer en français"
+    },
+    "meta": {
+        "title": "Hiarte",
+        "description": "Hiarte, micro-entreprise spécialisée dans le design et le développement de solutions numériques sur mesure : applications, automatisation, outils créatifs."
+    }
+}

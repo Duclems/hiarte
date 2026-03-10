@@ -20,12 +20,12 @@ export function AboutPage() {
       <Text variant="body" style={{ marginTop: '1rem' }}>
         Derrière Hiarte, il y a un profil à la croisée de plusieurs mondes :{' '}
         <strong>
-          le développement logiciel, l’UX/UI, l’automatisation, l’IA, la création d’outils sur mesure et
-          une vraie sensibilité au design
+          le développement logiciel, l’UX/UI, l’automatisation, la création d’outils sur mesure et une
+          vraie sensibilité au design
         </strong>
         . Cette approche s’est construite au fil de projets concrets mêlant conception logicielle,
-        full‑stack, architecture de pipelines, DevOps, OCR/NLP, visualisation de données, applications
-        web et desktop, ainsi qu’outillage métier.
+        développement full‑stack, architecture de pipelines, outillage métier et intégration de services
+        tiers.
       </Text>
 
       <Text variant="body" style={{ marginTop: '1rem' }}>
@@ -54,8 +54,8 @@ export function AboutPage() {
       </Text>
 
       <Text variant="body" style={{ marginTop: '1rem' }}>
-        Qu’il s’agisse d’une application, d’un outil interne, d’un prototype, d’un système
-        d’automatisation ou d’une brique d’IA, Hiarte défend la même idée :{' '}
+        Qu’il s’agisse d’une application, d’un outil interne, d’un prototype ou d’un système
+        d’automatisation, Hiarte défend la même idée :{' '}
         <strong>le sur‑mesure a de la valeur</strong>. Parce qu’un bon produit ne se contente pas de
         fonctionner. Il doit répondre à un vrai besoin, simplifier ce qui est complexe, respecter les
         personnes qui l’utilisent et incarner quelque chose de plus grand qu’une simple fonctionnalité.

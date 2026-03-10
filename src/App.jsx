@@ -6,6 +6,7 @@ import { ProjectsPage } from './pages/ProjectsPage'
 import { AboutPage } from './pages/AboutPage'
 import { ContactPage } from './pages/ContactPage'
 import { ProjectPathPage } from './pages/ProjectPathPage'
+import { HiTtsProjectPage } from './pages/HiTtsProjectPage'
 import { LegalPage } from './pages/LegalPage'
 import { PrivacyPage } from './pages/PrivacyPage'
 import { NotFoundPage } from './pages/NotFoundPage'
@@ -16,6 +17,8 @@ function App() {
       <Route path="/" element={<MainLayout />}>
         <Route index element={<HomePage />} />
         <Route path="projects" element={<ProjectsPage />} />
+        <Route path="projects/hi-tts" element={<HiTtsProjectPage />} />
+        <Route path="project/hi-tts" element={<HiTtsProjectPage />} />
         <Route path="about" element={<AboutPage />} />
         <Route path="contact" element={<ContactPage />} />
         <Route path="demarrer-un-projet" element={<ProjectPathPage />} />
